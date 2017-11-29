@@ -1,0 +1,81 @@
+---
+- name: Packages | Update Cache
+  tags: [extras,packages,packages]
+  apt:
+    update_cache: yes
+- name: Packages | Install Official Packages
+  tags: [extras,packages,packages]
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - aspell
+    - aspell-en
+    - aspell-nl
+    - audacity
+    - avidemux2.6-cli
+    - avidemux2.6-qt
+    - bleachbit
+    - chkrootkit
+    - clamtk
+    - composer
+    - conky-all
+    - davfs2
+    - exfat-fuse
+    - exfat-utils
+    - ffmpeg
+    - filezilla
+    - firefox
+    - fslint
+    - geany
+    - geany-plugins
+    - geany-plugin-markdown
+    - gimp
+    - git
+    - gitk
+    - gmpc
+    - hddtemp
+    - hdparm
+    - imagemagick
+    - keepassx
+    - lmms
+    - mediainfo-gui
+    - meld
+    - mkvtoolnix-gui
+    - mplayer
+    - mpv
+    - ocrfeeder
+    - openssh-client
+    - pixz
+    - pv
+    - pyrenamer
+    - rkhunter
+    - screen
+    - smartmontools
+    - software-properties-common
+    - sshfs
+    - tomboy
+    - unetbootin
+    - unrar
+    - virtualbox
+    - virtualbox-qt
+    - virtualbox-ext-pack
+    - xclip
+- name: Packages | Add User To Groups
+  tags: [extras,packages,packages]
+  user:
+    name: sander
+    groups: davfs2
+    append: yes
+- name: Packages | Remove Unwanted Packages
+  tags: [extras,packages,packages]
+  package:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - hexchat
+
+# TODO:
+# gscan2pdf from https://sourceforge.net/projects/gscan2pdf/
+# ttf-*
+# fonts-*

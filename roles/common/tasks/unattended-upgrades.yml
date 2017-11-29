@@ -1,0 +1,83 @@
+---
+- name: Unattended Upgrades | Install Package
+  tags: [extras,upgrades]
+  package:
+    name: unattended-upgrades
+- name: Unattended Upgrades | Add Allowed Origins
+  tags: [extras,upgrades]
+  lineinfile:
+    path: /etc/apt/apt.conf.d/50unattended-upgrades
+    line: "{{ item }}"
+    insertafter: '^Unattended-Upgrade::Allowed-Origins'
+    backup: yes
+  with_items:
+    - '    "mongodb:xenial"; // MongoDB official'
+    - '    "Canonical:xenial"; // Partner packages such as Flash'
+    - '    "Google\, Inc.:stable"; // Google Chrome'
+    - '    "GetDeb:xenial-getdeb";'
+    - '    "LP-PPA-pmjdebruijn-darktable-release:xenial"; // Darktable'
+    - '    "LP-PPA-webupd8team-atom:xenial"; // Atom'
+    - '    "LP-PPA-alessandro-strada:xenial"; // google-drive-ocamlfuse'
+    - '    "linuxmint:sylvia-updates";'
+    - '    "linuxmint:sylvia-security";'
+    - '    "linuxmint:sylvia";'
+    - '    "Ubuntu:xenial-updates";'
+    - '    "Ubuntu:xenial-security";'
+    - '    "Ubuntu:xenial";'
+    - '    "${distro_id}:${distro_codename}-updates";'
+- name: Unattended Upgrades | Add Level 4 and 5 Packages To Blacklist
+  tags: [extras,upgrades]
+  lineinfile:
+    path: /etc/apt/apt.conf.d/50unattended-upgrades
+    line: "{{ item }}"
+    insertafter: '^Unattended-Upgrade::Package-Blacklist'
+  become: true
+  with_items:
+    - '    "cuda.*";'
+    - '    "dbus.*";'
+    - '    ".*xorg.*";'
+    - '    "acpid";'
+    - '    "mountall";'
+    - '    ".*mesa.*";'
+    - '    "systemd.*";'
+    - '    "plymouth.*";'
+    - '    "upstart";'
+    - '    ".*base-files";'
+    - '    ".*linux-.*";'
+    - '    "grub.*";'
+    - '    // updates of levels 4 and 5 will be omitted'
+- name: Change updater settings
+  tags: [extras,upgrades]
+  lineinfile:
+    path: /etc/apt/apt.conf.d/50unattended-upgrades
+    regexp: '^(//)?{{ item.key }}'
+    line: '{{ item.key }} "{{ item.value }}";'
+  with_items:
+    - { key: 'Unattended-Upgrade::MinimalSteps', value: 'true' }
+    - { key: 'Unattended-Upgrade::AutoFixInterruptedDpkg', value: 'false' }
+    - { key: 'Unattended-Upgrade::InstallOnShutdown', value: 'false' }
+    - { key: 'Unattended-Upgrade::Remove-Unused-Dependencies', value: 'true' }
+    - { key: 'Unattended-Upgrade::Automatic-Reboot', value: 'false' }
+- name: Adding comments
+  tags: [extras,upgrades]
+  blockinfile:
+    path: /etc/apt/apt.conf.d/50unattended-upgrades
+    marker: // {mark} Notes
+    block: |
+      // Redsandro 2015-08-31 Automatic Updates
+      // Install:  sudo apt-get install unattended-upgrades
+      // Discover: /var/lib/apt/lists/*_Release Origin:Suite
+      // Verify:   sudo unattended-upgrade --dry-run && cat /var/log/unattended-upgrades/unattended-upgrades.log
+    insertbefore: BOF
+- name: Unattended Upgrades | Enable Unattended Upgrades
+  tags: [extras,upgrades]
+  lineinfile:
+    path: /etc/apt/apt.conf.d/20auto-upgrades
+    regexp: '^(//)?{{ item.key }}'
+    line: '{{ item.key }} "{{ item.value }}";'
+    backup: yes
+  with_items:
+    - { key: 'APT::Periodic::Update-Package-Lists', value: '1' }
+    - { key: 'APT::Periodic::Download-Upgradeable-Packages', value: '1' }
+    - { key: 'APT::Periodic::AutocleanInterval', value: '7' }
+    - { key: 'APT::Periodic::Unattended-Upgrade', value: '1' }

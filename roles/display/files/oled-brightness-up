@@ -1,0 +1,2 @@
+event=video/brightnessup BRTUP 00000086
+action=/etc/acpi/oled-brightness.sh up

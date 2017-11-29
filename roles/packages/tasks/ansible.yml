@@ -1,0 +1,12 @@
+---
+- name: Ansible | Add repository
+  tags: [extras,packages,ansible]
+  apt_repository:
+    repo: ppa:ansible/ansible
+    codename: xenial
+- name: Ansible | Install package
+  tags: [extras,packages,ansible]
+  package:
+    name: ansible
+    state: latest
+    update_cache: yes

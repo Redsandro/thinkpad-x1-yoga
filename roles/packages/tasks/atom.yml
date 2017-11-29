@@ -1,0 +1,12 @@
+---
+- name: Atom | Add repository
+  tags: [extras,packages,atom]
+  apt_repository:
+    repo: ppa:webupd8team/atom
+    codename: xenial
+- name: Atom | Install package
+  tags: [extras,packages,atom]
+  package:
+    name: atom
+    state: latest
+    update_cache: yes

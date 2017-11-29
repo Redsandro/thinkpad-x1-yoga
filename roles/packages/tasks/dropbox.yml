@@ -1,0 +1,16 @@
+---
+- name: Dropbox | Update Package Cache
+  tags: [extras,packages,dropbox]
+  apt:
+    update_cache: yes
+- name: Dropbox | Install Dependencies
+  tags: [extras,packages,dropbox]
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - python-gpgme
+- name: Dropbox | Install .deb Package
+  tags: [extras,packages,dropbox]
+  apt:
+    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb

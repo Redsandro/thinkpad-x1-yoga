@@ -1,0 +1,7 @@
+---
+- include_tasks: "{{ task }}.yml"
+  with_items:
+    - lightdm
+    - oled-brightness
+  loop_control:
+    loop_var: task

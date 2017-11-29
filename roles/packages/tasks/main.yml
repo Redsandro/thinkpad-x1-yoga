@@ -1,0 +1,19 @@
+---
+# Install official packages and dependencies first
+- import_tasks: packages.yml
+
+# Install external packages
+- import_tasks: atom.yml
+- import_tasks: dbeaver-ce.yml
+- import_tasks: deadbeef.yml
+- import_tasks: docker-ce.yml
+- import_tasks: dropbox.yml
+- import_tasks: firefox-touch.yml
+- import_tasks: freefilesync.yml
+- import_tasks: google-chrome.yml
+- import_tasks: google-drive.yml
+- import_tasks: master-pdf-editor.yml
+- import_tasks: nextcloud.yml
+- import_tasks: tlp.yml
+- import_tasks: wine.yml
+- import_tasks: xnviewmp.yml

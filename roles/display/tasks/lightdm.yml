@@ -1,0 +1,19 @@
+---
+- name: Set login screen to HiDPI mode
+  when: ansible_distribution == 'LinuxMint'
+  lineinfile:
+    path: /etc/lightdm/lightdm-gtk-greeter.conf.d/99_linuxmint.conf
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value }}"
+  with_items:
+    - { key: 'xft-dpi', value: '192' }
+- name: Set brightness on login screen
+  template:
+    src: files/xinit.sh
+    dest: /opt/etc/xinit.sh
+    mode: 0755
+- name: Execute script on login screen
+  template:
+    src: files/99-brightness.conf
+    dest: /etc/lightdm/lightdm.conf.d/99-brightness.conf
+    mode: 0755

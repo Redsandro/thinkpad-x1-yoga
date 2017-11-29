@@ -1,0 +1,12 @@
+---
+- name: NextCloud Client | Add Repository
+  tags: [extras,packages,nextcloud-client]
+  apt_repository:
+    repo: ppa:nextcloud-devs/client
+    codename: xenial
+- name: NextCloud Client | Install package
+  tags: [extras,packages,nextcloud-client]
+  package:
+    name: nextcloud-client
+    state: latest
+    update_cache: yes

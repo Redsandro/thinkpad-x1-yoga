@@ -1,0 +1,30 @@
+---
+- name: WineHQ | Update Package Cache
+  tags: [extras,packages,wine]
+  apt:
+    update_cache: yes
+- name: WineHQ | Install Dependencies
+  tags: [extras,packages,wine]
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+- name: WineHQ | Enable i386 architecture
+  tags: [extras,packages,wine]
+  command: dpkg --add-architecture i386
+- name: WineHQ | Add Repository
+  tags: [extras,packages,wine]
+  apt_repository:
+    repo: ppa:wine/wine-builds
+    codename: xenial
+- name: WineHQ | Install Package
+  tags: [extras,packages,wine]
+  package:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - winehq-staging

@@ -1,0 +1,12 @@
+---
+- name: Firefox | Install package
+  tags: [extras,packages,firefox]
+  package:
+    name: firefox
+    state: latest
+- name: Firefox | Enable Touch Support
+  tags: [extras,packages,firefox]
+  lineinfile:
+    path: /usr/share/applications/firefox.desktop
+    regexp: '^Exec=(env.*)?firefox %u$'
+    line: 'Exec=env MOZ_USE_XINPUT2=1 firefox %u'

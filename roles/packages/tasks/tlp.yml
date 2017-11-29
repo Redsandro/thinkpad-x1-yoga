@@ -1,0 +1,16 @@
+---
+- name: TLP Power Management | Add Repository
+  tags: [x1yoga,system]
+  apt_repository:
+    repo: ppa:linrunner/tlp
+    codename: xenial
+- name: TLP Power Management | Install Packages
+  tags: [x1yoga,system]
+  package:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - acpi-call
+    - tlp
+    - tlp-rdw
