@@ -29,6 +29,10 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt update && sudo apt install ansible
 ```
 
+### Disclaimer
+
+Use at your own risk. For advanced users only. Inspect the source before using. Worst case scenario: If something is conflicting or incompatible with your environment, your display manager might fail. You might have to log into textmode and undo related things.
+
 ### Usage
 
 ```
