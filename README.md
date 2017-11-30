@@ -31,9 +31,47 @@ sudo apt update && sudo apt install ansible
 
 ### Usage
 
+#### Most probable use-case
+
 ```
 sudo env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml --skip-tags="packages,extras"
 ```
+
+#### Everything except packages
+
+```
+sudo env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml --skip-tags packages
+```
+
+#### `tlp` Advanced Power Management only
+
+Or simply for updating your configuration.
+
+```
+sudo env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml --tags tlp
+```
+
+#### GRUB background + 3 second timeout
+
+```
+sudo env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml --tags grub
+```
+
+#### Enable touch in Firefox
+
+```
+sudo env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml --tags firefox
+```
+
+### Tips
+
+#### Battery
+
+The `tlp` power management is configured to keep the battery below fully charged to improve battery life. So before you get on an airplane, it makes sense to fully charge the battery once:
+
+* `sudo tlp chargeonce`
+
+For more power management options, see [the `tlp` manual](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#tlp).
 
 ### Disclaimer
 
@@ -42,3 +80,7 @@ Use at your own risk. For advanced users only. Inspect the source before using. 
 ### Contribute
 
 Please if you have some ThinkPad X1 Yoga specific tweaks to make this laptop work better and last longer, contribute those tasks.
+
+### Donate
+
+__Ƀ__ `1Dj21fUCtt3RXBWuoJ2TpzAyNmh2BU5YSL`

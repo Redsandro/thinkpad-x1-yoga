@@ -1,5 +1,14 @@
 ---
 # Note: This one is only relevant with multiple boot options
+- name: Grub | Add Background Image
+  tags: [extras,grub]
+  copy:
+    src: files/splash.png
+    dest: /boot/grub/splash.png
+    owner: root
+    group: root
+    mode: 0644
+  become: true
 - name: Grub | Hide grub menu and lower timeout
   tags: [extras,grub]
   lineinfile:

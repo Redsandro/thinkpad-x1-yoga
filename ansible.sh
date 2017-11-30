@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# sudo ./ansible.sh lenovo.yml --tags firefox
+# For updating tlp settings, run:
+# sudo ./ansible.sh x1yoga.yml --tags tlp
 
 SU=""
 if [ "$(whoami)" != "root" ]; then

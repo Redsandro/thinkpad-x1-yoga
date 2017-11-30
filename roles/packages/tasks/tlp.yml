@@ -27,3 +27,14 @@
     filename: official-package-repositories
     state: absent
     update_cache: yes
+- name: TLP Power Management | Tweak Configuration
+  tags: [x1yoga,system,tlp]
+  lineinfile:
+    path: /etc/default/tlp
+    regexp: "^#?{{ item.key }}="
+    line: "{{ item.key }}={{ item.value }}"
+  with_items:
+    - { key: 'MAX_LOST_WORK_SECS_ON_BAT', value: '90' }
+    - { key: 'START_CHARGE_THRESH_BAT0', value: '70' }
+    - { key: 'STOP_CHARGE_THRESH_BAT0', value: '80' }
+    - { key: 'RESTORE_THRESHOLDS_ON_BAT', value: '1' }

@@ -1,7 +1,3 @@
 ---
-- include_tasks: "{{ task }}.yml"
-  with_items:
-    - grub
-    - unattended-upgrades
-  loop_control:
-    loop_var: task
+- import_tasks: grub.yml
+- import_tasks: unattended-upgrades.yml
