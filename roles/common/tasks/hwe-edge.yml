@@ -1,0 +1,10 @@
+---
+- name: Packages | Install Official Packages
+  tags: [system,hwe]
+  package:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: yes
+  with_items:
+    - linux-generic-hwe-16.04-edge
+    - xserver-xorg-hwe-16.04

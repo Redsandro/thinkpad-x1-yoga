@@ -1,3 +1,4 @@
 ---
+- import_tasks: hwe-edge.yml
 - import_tasks: grub.yml
 - import_tasks: unattended-upgrades.yml
