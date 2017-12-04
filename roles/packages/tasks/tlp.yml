@@ -1,17 +1,17 @@
 ---
 - name: TLP Power Management | Add Repository
-  tags: [x1yoga,system,tlp]
+  tags: [yoga,system,tlp]
   apt_repository:
     repo: ppa:linrunner/tlp
     codename: xenial
 - name: TLP Power Management | Add Proposed Repository For acpi-call Hotfixes
-  tags: [x1yoga,system,tlp]
+  tags: [yoga,system,tlp]
   apt_repository:
     repo: 'deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe'
     filename: official-package-repositories
     state: present
 - name: TLP Power Management | Install Packages
-  tags: [x1yoga,system,tlp]
+  tags: [yoga,system,tlp]
   package:
     name: "{{ item }}"
     state: latest
@@ -21,14 +21,14 @@
     - tlp
     - tlp-rdw
 - name: TLP Power Management | Remove Proposed Repository
-  tags: [x1yoga,system,tlp]
+  tags: [yoga,system,tlp]
   apt_repository:
     repo: 'deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe'
     filename: official-package-repositories
     state: absent
     update_cache: yes
 - name: TLP Power Management | Tweak Configuration
-  tags: [x1yoga,system,tlp]
+  tags: [yoga,system,tlp]
   lineinfile:
     path: /etc/default/tlp
     regexp: "^#?{{ item.key }}="

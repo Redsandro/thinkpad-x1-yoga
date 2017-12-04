@@ -1,13 +1,17 @@
 ---
 - name: Get Main User For Scripts
+  tags: [yoga,oled]
   shell: id -nu 1000
   register: get_user_by_id
 - name: Register Main User
+  tags: [yoga,oled]
   set_fact:
     user: "{{get_user_by_id.stdout}}"
 - debug:
+  tags: [yoga,oled]
     var: user
 - name: OLED Brightness | Create ACPI Events
+  tags: [yoga,oled]
   template:
     src: files/{{ item }}
     dest: /etc/acpi/events/{{ item }}
@@ -16,6 +20,7 @@
     - oled-brightness-up
     - oled-brightness-down
 - name: OLED Brightness | Create ACPI Script
+  tags: [yoga,oled]
   template:
     src: files/{{ item }}
     dest: /etc/acpi/{{ item }}
@@ -23,6 +28,7 @@
   with_items:
     - oled-brightness.sh
 - name: OLED Brightness | Replace Main User In ACPI Script
+  tags: [yoga,oled]
   lineinfile:
     path: /etc/acpi/{{ item }}
     regexp: '^(.*)redsandro(.*)$'
@@ -32,6 +38,7 @@
   with_items:
     - oled-brightness.sh
 - name: Reload acpid
+  tags: [yoga,oled]
   systemd:
     name: acpid
     # state: reloaded # does not work

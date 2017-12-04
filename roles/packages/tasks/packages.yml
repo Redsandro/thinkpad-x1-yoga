@@ -23,6 +23,7 @@
     - davfs2
     - exfat-fuse
     - exfat-utils
+    - feh
     - ffmpeg
     - filezilla
     - firefox
