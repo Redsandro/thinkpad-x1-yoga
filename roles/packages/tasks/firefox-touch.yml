@@ -1,3 +1,4 @@
+# env ANSIBLE_NOCOWS=1 ansible-playbook --ask-become-pass --tags firefox x1remote.yml
 ---
 - name: Firefox | Install package
   tags: [extras,packages,firefox]
@@ -10,3 +11,49 @@
     path: /usr/share/applications/firefox.desktop
     regexp: '^Exec=(env.*)?firefox %u$'
     line: 'Exec=env MOZ_USE_XINPUT2=1 firefox %u'
+- name: Firefox | Get Main User
+  tags: [extras,packages,firefox]
+  shell: id -nu 1000
+  register: get_user_by_id
+- name: Firefox | Register Main User
+  tags: [extras,packages,firefox]
+  set_fact:
+    firefox_user: "{{get_user_by_id.stdout}}"
+- debug:
+    var: firefox_user
+- name: Firefox | Find local profile
+  tags: [extras,packages,firefox]
+  fetch:
+    src: /home/{{ firefox_user }}/.mozilla/firefox/profiles.ini
+    dest: fetched
+  with_first_found:
+    - files:
+        - /home/{{ firefox_user }}/.mozilla/firefox/profiles.ini
+      skip: true
+- name: Firefox | Register Main Profile
+  tags: [extras,packages,firefox]
+  set_fact:
+    firefox_profile: "{{ lookup('ini', 'Path section=Profile0 file=fetched/{{ inventory_hostname }}/home/{{ firefox_user }}/.mozilla/firefox/profiles.ini') }}"
+- debug:
+    var: firefox_profile
+# - name: Firefox | Install liblz4
+#   tags: [extras,packages,firefox]
+#   package:
+#     name: python-lz4
+#     state: latest
+# - name: Firefox | Extract Search Engines
+#   tags: [extras,packages,firefox]
+#   shell: "cat /home/{{ firefox_user }}/.mozilla/firefox/{{ firefox_profile }}/search.json.mozlz4 | python -c 'import sys, lz4; sys.stdin.read(8); print lz4.decompress(sys.stdin.read())' > /home/{{ firefox_user }}/.mozilla/firefox/{{ firefox_profile }}/search.json"
+  ## Ok, I've backed myself into a corner. This file is too complex to check for and add google etc
+  ## Let's just copy a file that already has search engines added and hope it works for the forseeable future.
+- name: Firefox | Add preconfigured search engies
+  tags: [extras,packages,firefox]
+  copy:
+    src: files/search.json.mozlz4
+    dest: "/home/{{ firefox_user }}/.mozilla/firefox/{{ firefox_profile }}/search.json.mozlz4"
+    owner: "{{ firefox_user }}"
+    group: "{{ firefox_user }}"
+    mode: 0600
+  become: yes
+  force: yes
+  backup: yes

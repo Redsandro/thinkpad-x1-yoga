@@ -13,8 +13,6 @@
     - aspell-en
     - aspell-nl
     - audacity
-    - avidemux2.6-cli
-    - avidemux2.6-qt
     - bleachbit
     - chkrootkit
     - clamtk
@@ -26,7 +24,6 @@
     - feh
     - ffmpeg
     - filezilla
-    - firefox
     - fslint
     - geany
     - geany-plugins

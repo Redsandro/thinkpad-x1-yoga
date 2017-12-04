@@ -4,6 +4,7 @@
 
 # Install external packages
 - import_tasks: atom.yml
+- import_tasks: avidemux.yml
 - import_tasks: dbeaver-ce.yml
 - import_tasks: deadbeef.yml
 - import_tasks: docker-ce.yml
