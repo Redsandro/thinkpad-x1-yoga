@@ -54,7 +54,7 @@
     line: '{{ item.key }} "{{ item.value }}";'
   with_items:
     - { key: 'Unattended-Upgrade::MinimalSteps', value: 'true' }
-    - { key: 'Unattended-Upgrade::AutoFixInterruptedDpkg', value: 'false' }
+    - { key: 'Unattended-Upgrade::AutoFixInterruptedDpkg', value: 'true' }
     - { key: 'Unattended-Upgrade::InstallOnShutdown', value: 'false' }
     - { key: 'Unattended-Upgrade::Remove-Unused-Dependencies', value: 'true' }
     - { key: 'Unattended-Upgrade::Automatic-Reboot', value: 'false' }
@@ -77,6 +77,7 @@
     line: '{{ item.key }} "{{ item.value }}";'
     backup: yes
   with_items:
+    - { key: 'APT::Periodic::Enable', value: '1' }
     - { key: 'APT::Periodic::Update-Package-Lists', value: '1' }
     - { key: 'APT::Periodic::Download-Upgradeable-Packages', value: '1' }
     - { key: 'APT::Periodic::AutocleanInterval', value: '7' }

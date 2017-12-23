@@ -54,6 +54,6 @@
     owner: "{{ firefox_user }}"
     group: "{{ firefox_user }}"
     mode: 0600
+    force: yes
+    backup: yes
   become: yes
-  force: yes
-  backup: yes

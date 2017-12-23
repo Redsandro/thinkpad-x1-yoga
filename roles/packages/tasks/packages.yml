@@ -32,6 +32,7 @@
     - git
     - gitk
     - gmpc
+    - gparted
     - hddtemp
     - hdparm
     - imagemagick
@@ -55,9 +56,9 @@
     - tomboy
     - unetbootin
     - unrar
-    - virtualbox
-    - virtualbox-qt
-    - virtualbox-ext-pack
+    # - virtualbox
+    # - virtualbox-qt
+    # - virtualbox-ext-pack
     - xclip
 - name: Packages | Add User To Groups
   tags: [extras,packages,packages]

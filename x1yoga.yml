@@ -1,3 +1,4 @@
+# env ANSIBLE_NOCOWS=1 ansible-playbook --ask-become-pass --tags vagrant x1yoga.yml
 ---
 - hosts: localhost
   connection: local

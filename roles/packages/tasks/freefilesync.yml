@@ -1,11 +1,16 @@
+# env ANSIBLE_NOCOWS=1 ansible-playbook --ask-become-pass --tags freefilesync x1yoga.yml
 ---
 - name: FreeFileSync | mkdir
   tags: [extras,packages,freefilesync]
   file: path=/opt/FreeFileSync state=directory
-- name: FreeFileSync | download package
+- name: FreeFileSync | Grab 16.04 download link
+  tags: [extras,packages,freefilesync]
+  shell: wget -O - https://www.freefilesync.org/download.php | grep 'Ubuntu_16.04_64-bit.tar.gz' | sed -n 's/.*href="\(.*\)".*/\1/p'
+  register: freefilesync_url
+- name: FreeFileSync | Download package
   tags: [extras,packages,freefilesync]
   unarchive:
-    src: 'https://www.freefilesync.org/download/FreeFileSync_9.5_Ubuntu_16.04_64-bit.tar.gz'
+    src: 'https://www.freefilesync.org{{freefilesync_url.stdout}}'
     dest: /opt/FreeFileSync
     remote_src: yes
     extra_opts: [--strip-components=1]
@@ -27,3 +32,12 @@
     src: /opt/FreeFileSync/FreeFileSync
     dest: /usr/local/bin/FreeFileSync
     state: link
+- name: FreeFileSync | Configuration permissions
+  tags: [extras,packages,freefilesync]
+  file:
+    path: /opt/FreeFileSync/{{item}}
+    state: touch
+    mode: 0666
+  with_items:
+    - GlobalSettings.xml
+    - LastRun.ffs_gui
