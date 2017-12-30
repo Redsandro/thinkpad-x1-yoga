@@ -69,7 +69,7 @@ sudo env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml --tags firefox
 
 The `tlp` power management is configured to keep the battery below fully charged to improve battery life. So before you get on an airplane, it makes sense to fully charge the battery once:
 
-* `sudo tlp chargeonce`
+* `sudo tlp fullcharge`
 
 For more power management options, see [the `tlp` manual](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#tlp).
 
