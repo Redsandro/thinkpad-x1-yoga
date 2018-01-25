@@ -48,6 +48,8 @@
     - pixz
     - pv
     - pyrenamer
+    - python-easywebdav
+    - python-termcolor
     - rkhunter
     - screen
     - smartmontools
@@ -60,12 +62,19 @@
     # - virtualbox-qt
     # - virtualbox-ext-pack
     - xclip
+    - youtube-dl
 - name: Packages | Add User To Groups
-  tags: [extras,packages,packages]
+  tags: [extras,packages,webdav]
   user:
     name: sander
     groups: davfs2
     append: yes
+- name: Packages | Setuid root
+  tags: [extras,packages,webdav]
+  file:
+    path: /usr/sbin/mount.davfs
+    state: touch
+    mode: 4755
 - name: Packages | Remove Unwanted Packages
   tags: [extras,packages,packages]
   package:
