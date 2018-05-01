@@ -1,3 +1,7 @@
+> :information_source: __Note:__ Extra packages have been moved to a different repository:
+>
+> * [Redsandro/ansible-ubuntu-software](https://github.com/Redsandro/ansible-ubuntu-software)
+
 # ThinkPad X1 Yoga Provisioning Playbook
 
 This playbook was made for and tested on my __Lenovo ThinkPad X1 Yoga__ (2nd gen) __JD__ series with UHD __OLED__ panel.

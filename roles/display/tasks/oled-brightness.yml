@@ -10,8 +10,8 @@
 - name: OLED Brightness | Create ACPI Events
   tags: [yoga,oled]
   template:
-    src: files/{{ item }}
-    dest: /etc/acpi/events/{{ item }}
+    src: "files/{{item}}"
+    dest: "/etc/acpi/events/{{item}}"
     mode: 0644
   with_items:
     - oled-brightness-up
@@ -19,15 +19,15 @@
 - name: OLED Brightness | Create ACPI Script
   tags: [yoga,oled]
   template:
-    src: files/{{ item }}
-    dest: /etc/acpi/{{ item }}
+    src: "files/{{item}}"
+    dest: "/etc/acpi/{{item}}"
     mode: 0755
   with_items:
     - oled-brightness.sh
 - name: OLED Brightness | Replace Main User In ACPI Script
   tags: [yoga,oled]
   lineinfile:
-    path: /etc/acpi/{{ item }}
+    path: "/etc/acpi/{{item}}"
     regexp: '^(.*)redsandro(.*)$'
     line: '\1{{ user }}\2'
     backrefs: yes
@@ -38,5 +38,4 @@
   tags: [yoga,oled]
   systemd:
     name: acpid
-    # state: reloaded # does not work
     daemon_reload: true

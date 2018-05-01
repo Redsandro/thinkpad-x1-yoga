@@ -1,5 +1,0 @@
----
-- name: DBeaver-CE | Install .deb Package
-  tags: [extras,packages,dbeaver]
-  apt:
-    deb: https://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb

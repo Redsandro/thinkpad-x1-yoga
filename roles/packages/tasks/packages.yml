@@ -9,72 +9,15 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - aspell
-    - aspell-en
-    - aspell-nl
-    - audacity
-    - bleachbit
     - chkrootkit
     - clamtk
-    - composer
-    - conky-all
-    - davfs2
-    - exfat-fuse
-    - exfat-utils
-    - feh
-    - ffmpeg
-    - filezilla
-    - fslint
-    - geany
-    - geany-plugins
-    - geany-plugin-markdown
-    - gimp
     - git
-    - gitk
-    - gmpc
     - gparted
     - hddtemp
     - hdparm
-    - imagemagick
-    - keepassx
-    - lmms
-    - mediainfo-gui
-    - meld
-    - mkvtoolnix-gui
-    - mplayer
-    - mpv
-    - ocrfeeder
-    - openssh-client
-    - pixz
-    - pv
-    - pyrenamer
-    - python-easywebdav
-    - python-termcolor
     - rkhunter
     - screen
     - smartmontools
-    - software-properties-common
-    - sshfs
-    - tomboy
-    - unetbootin
-    - unrar
-    # - virtualbox
-    # - virtualbox-qt
-    # - virtualbox-ext-pack
-    - xclip
-    - youtube-dl
-- name: Packages | Add User To Groups
-  tags: [extras,packages,webdav]
-  user:
-    name: sander
-    groups: davfs2
-    append: yes
-- name: Packages | Setuid root
-  tags: [extras,packages,webdav]
-  file:
-    path: /usr/sbin/mount.davfs
-    state: touch
-    mode: 4755
 - name: Packages | Remove Unwanted Packages
   tags: [extras,packages,packages]
   package:
@@ -82,8 +25,3 @@
     state: absent
   with_items:
     - hexchat
-
-# TODO:
-# gscan2pdf from https://sourceforge.net/projects/gscan2pdf/
-# ttf-*
-# fonts-*

@@ -1,4 +1,5 @@
-# env ANSIBLE_NOCOWS=1 ansible-playbook --ask-become-pass --tags vagrant x1yoga.yml
+# Run example:
+# sudo env ANSIBLE_NOCOWS=1 ansible-playbook --skip-tags firefox x1yoga.yml
 ---
 - hosts: localhost
   connection: local

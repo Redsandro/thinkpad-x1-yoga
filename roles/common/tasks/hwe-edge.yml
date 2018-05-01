@@ -1,6 +1,8 @@
+# WARNING! This is EDGE, sometimes this causes your computer to no longer boot.
+# Only for pro's. Use tag 'hwe' to force this.
 ---
 - name: Packages | Install Official Packages
-  tags: [system,hwe]
+  tags: [never,hwe]
   package:
     name: "{{ item }}"
     state: latest
