@@ -1,4 +1,5 @@
 ---
 # - import_tasks: hwe-edge.yml # This one breaks things on some systems. Uncomment if you know what you're doing.
 - import_tasks: grub.yml
+- import_tasks: powertop.yml
 - import_tasks: unattended-upgrades.yml

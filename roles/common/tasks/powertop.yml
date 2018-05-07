@@ -1,0 +1,24 @@
+# https://blog.sleeplessbeastie.eu/2015/08/10/how-to-set-all-tunable-powertop-options-at-system-boot/
+---
+- name: Powertop | Install Daemon
+  tags: [extras,powertop]
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - powertop
+- name: Powertop | Add systemd service
+  tags: [extras,powertop]
+  copy:
+    src: files/powertop.service
+    dest: /etc/systemd/system/powertop.service
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+- name: Powertop | Enable service
+  systemd:
+    name: powertop
+    enabled: yes
+    state: started
+    daemon_reload: yes

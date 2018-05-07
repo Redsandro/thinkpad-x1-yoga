@@ -5,7 +5,8 @@
 #
 # For remote provisioning, set up:
 # /etc/ansible/hosts
-# env ANSIBLE_NOCOWS=1 ansible-playbook --ask-become-pass --skip-tags="hidpi,yoga,oled" x1remote.yml
+# sudo env ANSIBLE_NOCOWS=1 ansible-playbook --skip-tags="hidpi,yoga,oled" x1remote.yml
+# sudo env ANSIBLE_NOCOWS=1 ansible-playbook --tags="powertop" x1yoga.yml
 
 SU=""
 if [ "$(whoami)" != "root" ]; then
