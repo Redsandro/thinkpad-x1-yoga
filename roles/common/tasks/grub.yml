@@ -16,9 +16,9 @@
     regexp: "^{{ item.key }}="
     line: "{{ item.key }}={{ item.value }}"
   with_items:
-    - { key: 'GRUB_HIDDEN_TIMEOUT', value: '3' }
+    - { key: 'GRUB_HIDDEN_TIMEOUT', value: '1' }
     - { key: 'GRUB_HIDDEN_TIMEOUT_QUIET', value: 'true' }
-    - { key: 'GRUB_TIMEOUT', value: '3' }
+    - { key: 'GRUB_TIMEOUT', value: '2' }
     - { key: 'GRUB_TIMEOUT_STYLE', value: 'countdown' }
 - name: Grub | Update
   tags: [extras,grub]

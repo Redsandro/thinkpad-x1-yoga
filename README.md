@@ -1,3 +1,10 @@
+> :warning: __Note:__
+>
+> This will install packages from `bionic` repositories.
+> E.g.: Linux Mint 19, Ubuntu 18.04.
+>
+> For `xenial`, check out the `xenial` branch.
+
 > :information_source: __Note:__ Extra packages have been moved to a different repository:
 >
 > * [Redsandro/ansible-ubuntu-software](https://github.com/Redsandro/ansible-ubuntu-software)

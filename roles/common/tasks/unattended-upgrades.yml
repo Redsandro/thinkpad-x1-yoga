@@ -11,19 +11,19 @@
     insertafter: '^Unattended-Upgrade::Allowed-Origins'
     backup: yes
   with_items:
-    - '    "mongodb:xenial"; // MongoDB official'
-    - '    "Canonical:xenial"; // Partner packages such as Flash'
+    - '    "mongodb:bionic"; // MongoDB official'
+    - '    "Canonical:bionic"; // Partner packages such as Flash'
     - '    "Google\, Inc.:stable"; // Google Chrome'
-    - '    "GetDeb:xenial-getdeb";'
-    - '    "LP-PPA-pmjdebruijn-darktable-release:xenial"; // Darktable'
-    - '    "LP-PPA-webupd8team-atom:xenial"; // Atom'
-    - '    "LP-PPA-alessandro-strada:xenial"; // google-drive-ocamlfuse'
-    - '    "linuxmint:sylvia-updates";'
-    - '    "linuxmint:sylvia-security";'
-    - '    "linuxmint:sylvia";'
-    - '    "Ubuntu:xenial-updates";'
-    - '    "Ubuntu:xenial-security";'
-    - '    "Ubuntu:xenial";'
+    - '    "GetDeb:bionic-getdeb";'
+    - '    "LP-PPA-pmjdebruijn-darktable-release:bionic"; // Darktable'
+    - '    "LP-PPA-webupd8team-atom:bionic";
+    - '    "LP-PPA-alessandro-strada:bionic"; // google-drive-ocamlfuse'
+    - '    "linuxmint:tara-updates";'
+    - '    "linuxmint:tara-security";'
+    - '    "linuxmint:tara";'
+    - '    "Ubuntu:bionic-updates";'
+    - '    "Ubuntu:bionic-security";'
+    - '    "Ubuntu:bionic";'
     - '    "${distro_id}:${distro_codename}-updates";'
 - name: Unattended Upgrades | Add Level 4 and 5 Packages To Blacklist
   tags: [extras,upgrades]

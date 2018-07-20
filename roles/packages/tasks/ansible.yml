@@ -3,7 +3,7 @@
   tags: [extras,packages,ansible]
   apt_repository:
     repo: ppa:ansible/ansible
-    codename: xenial
+    codename: bionic
 - name: Ansible | Install package
   tags: [extras,packages,ansible]
   package:
