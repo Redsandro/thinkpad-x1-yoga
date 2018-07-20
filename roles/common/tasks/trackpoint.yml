@@ -1,0 +1,11 @@
+# Active after reboot. Want it active immediately? Run the following:
+# sudo systemd-tmpfiles --prefix=/sys --create
+---
+- name: Lenovo Trackpoint | Increase sensitivity
+  tags: [extras,trackpoint]
+  copy:
+    src: files/trackpoint.conf
+    dest: /etc/tmpfiles.d/trackpoint.conf
+    owner: root
+    group: root
+    mode: 0644

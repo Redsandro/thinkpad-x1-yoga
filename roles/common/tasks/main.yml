@@ -3,3 +3,4 @@
 - import_tasks: grub.yml
 - import_tasks: powertop.yml
 - import_tasks: unattended-upgrades.yml
+- import_tasks: trackpoint.yml
