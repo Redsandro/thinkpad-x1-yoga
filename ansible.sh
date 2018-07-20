@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # For updating tlp settings, run:
-# sudo ./ansible.sh x1yoga.yml --tags tlp
+# sudo ./ansible.sh --tags tlp
 #
 # For remote provisioning, set up:
 # /etc/ansible/hosts
@@ -15,4 +15,4 @@ if [ "$(whoami)" != "root" ]; then
 	SU="--ask-become-pass"
 fi
 
-env ANSIBLE_NOCOWS=1 ansible-playbook $SU $1 $2 $3 $4 $5 $6
+env ANSIBLE_NOCOWS=1 ansible-playbook x1yoga.yml $SU $1 $2 $3 $4 $5 $6

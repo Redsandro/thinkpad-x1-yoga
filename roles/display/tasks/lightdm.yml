@@ -1,7 +1,7 @@
 ---
 - name: Set login screen to HiDPI mode
   tags: [yoga,lightdm,hidpi]
-  when: ansible_distribution == 'LinuxMint'
+  when: ansible_distribution == 'Linux Mint'
   lineinfile:
     path: /etc/lightdm/lightdm-gtk-greeter.conf.d/99_linuxmint.conf
     regexp: "^{{ item.key }}="

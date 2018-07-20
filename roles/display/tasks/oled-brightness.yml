@@ -1,12 +1,15 @@
 ---
 - name: Get Main User For Scripts
+  tags: [yoga,oled]
   shell: id -nu 1000
   register: get_user_by_id
 - name: Register Main User
+  tags: [yoga,oled]
   set_fact:
     user: "{{get_user_by_id.stdout}}"
 - debug:
     var: user
+
 - name: OLED Brightness | Create ACPI Events
   tags: [yoga,oled]
   template:

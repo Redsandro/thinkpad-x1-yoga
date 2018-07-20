@@ -27,6 +27,6 @@ export XAUTHORITY=/home/redsandro/.Xauthority  # CHANGE "ivo" TO YOUR USER
 export DISPLAY=:0.0
 
 # echo "xrandr --output eDP1 --brightness $PERCENT" | logger -t oled-brightness
-xrandr --output eDP1 --brightness $PERCENT 2>&1 >/dev/null | logger -t oled-brightness
+xrandr --output eDP-1 --brightness $PERCENT 2>&1 >/dev/null | logger -t oled-brightness
 
 echo $VAL > "$BR_DIR/brightness"
