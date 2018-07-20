@@ -16,7 +16,7 @@
     - '    "Google\, Inc.:stable"; // Google Chrome'
     - '    "GetDeb:bionic-getdeb";'
     - '    "LP-PPA-pmjdebruijn-darktable-release:bionic"; // Darktable'
-    - '    "LP-PPA-webupd8team-atom:bionic";
+    - '    "LP-PPA-webupd8team-atom:bionic";'
     - '    "LP-PPA-alessandro-strada:bionic"; // google-drive-ocamlfuse'
     - '    "linuxmint:tara-updates";'
     - '    "linuxmint:tara-security";'
