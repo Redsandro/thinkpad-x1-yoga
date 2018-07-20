@@ -4,11 +4,11 @@
   tags: [yoga,system,tlp]
   apt_repository:
     repo: ppa:linrunner/tlp
-    codename: xenial
+    codename: bionic
 - name: TLP Power Management | Add Proposed Repository For acpi-call Hotfixes
   tags: [yoga,system,tlp]
   apt_repository:
-    repo: 'deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe'
+    repo: 'deb http://archive.ubuntu.com/ubuntu/ bionic-proposed restricted main multiverse universe'
     filename: official-package-repositories
     state: present
 - name: TLP Power Management | Install Packages
@@ -24,7 +24,7 @@
 - name: TLP Power Management | Remove Proposed Repository
   tags: [yoga,system,tlp]
   apt_repository:
-    repo: 'deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe'
+    repo: 'deb http://archive.ubuntu.com/ubuntu/ bionic-proposed restricted main multiverse universe'
     filename: official-package-repositories
     state: absent
     update_cache: yes

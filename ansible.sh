@@ -5,7 +5,9 @@
 #
 # For remote provisioning, set up:
 # /etc/ansible/hosts
+# Skip irrelevant tasks:
 # sudo env ANSIBLE_NOCOWS=1 ansible-playbook --skip-tags="hidpi,yoga,oled" x1remote.yml
+# Run only certain tasks:
 # sudo env ANSIBLE_NOCOWS=1 ansible-playbook --tags="powertop" x1yoga.yml
 
 SU=""

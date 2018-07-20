@@ -1,10 +1,10 @@
 ---
 - name: Packages | Update Cache
-  tags: [extras,packages,packages]
+  tags: [extras,packages]
   apt:
     update_cache: yes
 - name: Packages | Install Official Packages
-  tags: [extras,packages,packages]
+  tags: [extras,packages]
   package:
     name: "{{ item }}"
     state: latest
@@ -19,7 +19,7 @@
     - screen
     - smartmontools
 - name: Packages | Remove Unwanted Packages
-  tags: [extras,packages,packages]
+  tags: [extras,clean,cleanup,prune,never]
   package:
     name: "{{ item }}"
     state: absent

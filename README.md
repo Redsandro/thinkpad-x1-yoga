@@ -1,6 +1,13 @@
+> :warning: __Note:__
+>
+> This will install packages from `bionic` repositories.
+> E.g.: Linux Mint 19, Ubuntu 18.04.
+>
+> For `xenial`, check out the `xenial` branch.
+
 > :warning: **Note:** Brightness scripts are implemented on `lightdm`. It won't work on `gdm`.
 >
-> I haven't worked with Ubuntu 18.04 or Linux Mint 19 (yet) because I consider them [broken](https://askubuntu.com/a/1031509) for now.
+> I haven't worked with Ubuntu 18.04/gdm (yet) because I consider it [broken](https://askubuntu.com/a/1031509) for now.
 
 ---
 
