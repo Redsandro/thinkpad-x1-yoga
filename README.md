@@ -1,6 +1,14 @@
-> :information_source: __Note:__ Extra packages have been moved to a different repository:
+> :warning: **Note:** Brightness scripts are implemented on `lightdm`. It won't work on `gdm`.
+>
+> I haven't worked with Ubuntu 18.04 or Linux Mint 19 (yet) because I consider them [broken](https://askubuntu.com/a/1031509) for now.
+
+---
+
+> :information_source: **Note:** Extra packages have been moved to a different repository:
 >
 > * [Redsandro/ansible-ubuntu-software](https://github.com/Redsandro/ansible-ubuntu-software)
+
+---
 
 # ThinkPad X1 Yoga Provisioning Playbook
 
