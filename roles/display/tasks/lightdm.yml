@@ -8,7 +8,10 @@
     line: "{{ item.key }}={{ item.value }}"
   with_items:
     - { key: 'xft-dpi', value: '192' }
-- name: Set brightness on login screen
+- name: Set brightness on login screen -> create parent directory
+  tags: [yoga,lightdm,hidpi]
+  file: path=/opt/etc state=directory
+- name: Set brightness on login screen -> copy script
   tags: [yoga,lightdm,hidpi]
   template:
     src: files/xinit.sh
